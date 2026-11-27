@@ -25,6 +25,18 @@
 - ميزات الباك ما سوّاها (skills, smart-assign, nexa-bot): Mock فقط ومخفية بـ `VITE_ENABLE_PLANNED=false`.
 - ما في تعليقات بالكود. ما ترفع `.env`.
 
+## بنية المشروع (من `chore/project-setup`)
+- اسم مجلد الميزة = اسم البرانش بعد `feat/` (مثلاً `src/features/org-chart`). المجلدات موجودة من البداية، وكل واحد فيه `index.ts`.
+- `index.ts` بيعمل `export default defineFeature({ id, planned?, routes, publicRoutes, access, nav, dictionary })` من `@/app/feature`. التسجيل تلقائي عبر `import.meta.glob` بـ `src/app/registry.ts`، فما في داعي تعدّل أي ملف مشترك عشان تضيف مسار أو قائمة أو ترجمة أو mock.
+  - `routes` داخل التطبيق (المسار نسبي بدون `/` بالأول، مثلاً `employees/:id`)، و`publicRoutes` للصفحات العامة (`/login` `/careers`). أول ميزة بتسجّل `/` بتلغي الصفحة المؤقتة.
+  - `access`: صفوف `['/employees/:id', ['hr_admin']]`، وبيقرأها `canAccess` من `@/app/access`.
+  - `planned: true` بيخفي الميزة كلها إلا إذا `VITE_ENABLE_PLANNED=true`.
+- الترجمة: `export const dictionary = defineBi({ 'employees.title': ['الموظفون', 'Employees'] })` بالـ `index.ts`، وبالشاشات `const { t } = useI18n(dictionary)` (المفاتيح typed). مفاتيح الميزة بتبدأ باسمها. النصوص العامة (`act.*` `state.*` `k.*`) جاهزة بـ `@/i18n`.
+- الـ API: `http.get/post/put/patch/delete/blob` من `@/lib/http` بيرجّع `data` مباشرة (بيفك `{ success, data, timestamp }`)، والأخطاء `ApiError` فيها `status` و`messages`. الأنواع العامة `Role` `Paginated<T>` `PageParams` بـ `@/types/common`.
+- الـ Mock: `mocks.ts` بيعمل `export const handlers = [...]` بـ `http` من `msw`، مع `api('/path')` و`ok(data)` و`fail(status, message)` و`paginate(items, request)` من `@/mocks/utils`. بيتسجّل تلقائياً.
+- `src/types/api.d.ts` مولّد (`npm run gen:types`) لا تعدّله بإيدك. فيه الـ DTOs بس: `openapi.json` ما فيه أشكال الردود، فأنواع الردود بتنكتب بالميزة من `API_MAP.md` وكود الباك.
+- `reference/` مستثنى من lint وbuild وTailwind.
+
 ## طقس النهاية (قبل ما تعتبر البرانش خلص)
 1. `npm run lint` و`npm run build` بدون أخطاء.
 2. حدّث `PROGRESS.md` بنفس البرانش: الحالة ✅ والتاريخ، وبقسم "ملاحظات للثاني" أي شي بيتأثر فيه: مكوّن مشترك احتجته، فرق بين الـ mock والـ openapi، قرار اتخذته.

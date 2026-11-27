@@ -7,7 +7,7 @@
 
 | # | البرانش | المنفّذ | الحالة | التاريخ | دمج الباك |
 |---|---|---|---|---|---|
-| 0.1 | chore/project-setup | حسام | ⬜ | | — |
+| 0.1 | chore/project-setup | حسام | ✅ | 2026-11-27 | — |
 | 0.2 | feat/ui-kit | بهاء | ⬜ | | — |
 | 0.3 | feat/core-api-auth | حسام | ⬜ | | ⬜ |
 | 0.4 | feat/app-shell | بهاء | ⬜ | | — |
@@ -37,4 +37,7 @@
 ## ملاحظات للثاني
 سطر لكل ملاحظة: التاريخ — البرانش — الملاحظة.
 
-- 2026-11-27 — بداية — لا ملاحظات بعد.
+- 2026-11-27 — chore/project-setup — كل ميزة بتتسجّل من `index.ts` تبعها بس (routes, access, nav, dictionary, planned) والـ mocks من `mocks.ts`، بدون لمس ملفات مشتركة. التفاصيل بقسم "بنية المشروع" بـ CLAUDE.md.
+- 2026-11-27 — chore/project-setup — `openapi.json` ما فيه أشكال الردود (DTOs الطلبات بس)، فـ `gen:types` بيعطي أنواع الطلبات بس. أنواع الردود بتنكتب بالميزة من `API_MAP.md`.
+- 2026-11-27 — chore/project-setup — MSW نسخة 3: `onUnhandledRequest` صار اسمه `onUnhandledFrame`. `gen:types` بيشغّل `openapi-typescript` عبر npx لأنه بيحتاج TypeScript 5 والمشروع على 7.
+- 2026-11-27 — chore/project-setup — `components/ui` فاضي لـ `feat/ui-kit`. الصفحة المؤقتة و404 بـ `src/app/SetupPages.tsx` بيتبدّلوا بـ `feat/core-api-auth`.
