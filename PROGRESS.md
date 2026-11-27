@@ -9,7 +9,7 @@
 |---|---|---|---|---|---|
 | 0.1 | chore/project-setup | حسام | ✅ | 2026-11-27 | — |
 | 0.2 | feat/ui-kit | بهاء | ⬜ | | — |
-| 0.3 | feat/core-api-auth | حسام | 👀 | 2026-11-27 | ⬜ |
+| 0.3 | feat/core-api-auth | حسام | ✅ | 2026-11-27 | ⬜ |
 | 0.4 | feat/app-shell | بهاء | ⬜ | | — |
 | 0.5 | feat/shared-components | حسام | ⬜ | | ⬜ |
 | 1.1 | feat/auth-login | بهاء | ⬜ | | ⬜ |
