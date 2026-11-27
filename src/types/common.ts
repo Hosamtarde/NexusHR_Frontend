@@ -1,4 +1,4 @@
-export type Role = 'employee' | 'manager' | 'hr_admin'
+export type { AppRole, Role } from './auth'
 
 export interface ApiEnvelope<T> {
   success: true
