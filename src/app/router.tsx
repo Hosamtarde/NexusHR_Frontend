@@ -1,4 +1,5 @@
-import { createBrowserRouter, Outlet, type RouteObject } from 'react-router'
+import { createBrowserRouter, type RouteObject } from 'react-router'
+import { RequireAuth, RoleGuard } from './auth'
 import { ForbiddenPage, NotFoundPage, RouteErrorPage } from './ErrorPages'
 import { appRoutes, publicRoutes } from './registry'
 import { SetupHome } from './SetupPages'
@@ -13,7 +14,11 @@ export const router = createBrowserRouter([
     children: [
       ...publicRoutes,
       { path: '/403', element: <ForbiddenPage standalone /> },
-      { path: '/', element: <Outlet />, children: [...fallbackHome, ...appRoutes] },
+      {
+        path: '/',
+        element: <RequireAuth />,
+        children: [{ element: <RoleGuard />, children: [...fallbackHome, ...appRoutes] }],
+      },
       { path: '*', element: <NotFoundPage standalone /> },
     ],
   },
