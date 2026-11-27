@@ -43,10 +43,17 @@
 - `src/types/api.d.ts` مولّد من `openapi.json` (`npm run gen:types`) للرجوع إليه بس، لا تعدّله بإيدك ولا تعتمد عليه كمصدر للأنواع. المصدر هو `types.ts` بالميزة.
 - `reference/` مستثنى من lint وbuild وTailwind.
 
+## قاعدة الـ commits
+- commit صغير ومستقل لكل خطوة منطقية: types، api وhooks، mocks، صفحة، مكوّن، تسجيل المسارات.
+- الرسالة بالإنجليزي بصيغة conventional: `feat(<ميزة>): وصف`، `fix(...)`، `docs(...)`، `chore(...)`.
+- كل commit لحاله لازم يمر `npm run lint` و`npm run build`.
+- `git add` للملفات المعنية بالخطوة بس (مش `git add .`).
+- ما بنعمل commits تافهة لتكبير العدد، وما بنعمل squash.
+
 ## طقس النهاية (قبل ما تعتبر البرانش خلص)
 1. `npm run lint` و`npm run build` بدون أخطاء.
 2. حدّث `PROGRESS.md` بنفس البرانش: الحالة ✅ والتاريخ، وبقسم "ملاحظات للثاني" أي شي بيتأثر فيه: مكوّن مشترك احتجته، فرق بين الـ mock و`API_MAP.md`، قرار اتخذته.
-3. `git add src/features/<ميزة> PROGRESS.md` (مش `git add .`)، وcommit بالإنجليزي: `feat(<ميزة>): وصف`.
+3. commit أخير لـ `PROGRESS.md` لحاله: `docs(<ميزة>): ...` (حسب "قاعدة الـ commits").
 4. `git pull --rebase origin main` ثم `git push -u origin feat/<ميزة>`، ولا تدمج بنفسك: بيراجع الثاني وبيعمل Squash and merge.
 
 ## لو المحادثة جديدة وما معك Claude Code

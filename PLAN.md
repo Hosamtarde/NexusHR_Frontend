@@ -9,7 +9,7 @@
 
 ## الخطوات الخمسة لكل برانش
 1. افتح برانش من `main`.
-2. Claude بيبني: types ← api.ts ← mocks.ts ← hooks.ts ← الشاشات، بحسب `CLAUDE.md`.
+2. Claude بيبني: types ← api.ts ← mocks.ts ← hooks.ts ← الشاشات، بحسب `CLAUDE.md`، مع commit صغير لكل خطوة (شوف "قاعدة الـ commits").
 3. افحص: `npm run lint` و`npm run build` وجرّب الأدوار الثلاثة بالـ mock.
 4. ارفع: `git pull --rebase origin main` ثم push وافتح PR على `main`، واكتب سطرين: شو بنيت، وإنك جرّبت الأدوار الثلاثة بالعربي والإنجليزي.
 5. الثاني يراجع خلال يوم، Squash and merge، وتحديث `PROGRESS.md` (بنفس الـ PR).
@@ -22,8 +22,13 @@
 - التصميم من reference/ui-prototype (نفس الشاشات والأدوار الثلاثة)
 - ابدأ بـ api.ts وmocks.ts وhooks.ts، وبعدين الشاشات، مع loading وempty وerror وعربي/إنجليزي
 - لا تلمس أي ملف خارج src/features/<اسم>
-- في الآخر شغّل lint وbuild، حدّث PROGRESS.md، وسوّي commit
+- commit صغير لكل خطوة، وفي الآخر شغّل lint وbuild وحدّث PROGRESS.md بـ commit لحاله
 ```
+
+## قاعدة الـ commits
+- commit صغير ومستقل لكل خطوة منطقية: types، api وhooks، mocks، صفحة، مكوّن، تسجيل المسارات.
+- بالإنجليزي بصيغة conventional، وكل commit لحاله بيمر lint وbuild.
+- ما بنعمل commits تافهة لتكبير العدد، وما بنعمل squash.
 
 ## الـ Mock
 | الشي | وين |
