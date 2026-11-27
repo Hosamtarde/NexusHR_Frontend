@@ -1,4 +1,4 @@
-import type { Role } from '@/types/common'
+import { isAppRole, type Role } from '@/types/auth'
 import { accessRules } from './registry'
 
 const matcher = (pattern: string) => {
@@ -20,7 +20,8 @@ export function rolesFor(path: string): readonly Role[] | null {
   return compiled.find((rule) => rule.test.test(clean))?.roles ?? null
 }
 
-export function canAccess(role: Role, path: string) {
+export function canAccess(role: unknown, path: string) {
+  if (!isAppRole(role)) return false
   const roles = rolesFor(path)
   return roles === null || roles.includes(role)
 }
