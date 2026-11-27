@@ -12,7 +12,7 @@
 2. Claude بيبني: types ← api.ts ← mocks.ts ← hooks.ts ← الشاشات، بحسب `CLAUDE.md`، مع commit صغير لكل خطوة (شوف "قاعدة الـ commits").
 3. افحص: `npm run lint` و`npm run build` وجرّب الأدوار الثلاثة بالـ mock.
 4. ارفع: `git pull --rebase origin main` ثم push وافتح PR على `main`، واكتب سطرين: شو بنيت، وإنك جرّبت الأدوار الثلاثة بالعربي والإنجليزي.
-5. الثاني يراجع خلال يوم، Squash and merge، وتحديث `PROGRESS.md` (بنفس الـ PR).
+5. ادمج: ما في مراجعة من الثاني. استنى الـ CI (check) ✅ وادمج بنفسك بزر Create a merge commit (و`PROGRESS.md` متحدّث بنفس الـ PR).
 
 برومت بداية أي ميزة:
 
@@ -42,13 +42,13 @@
 ## قواعد منع التعارض
 1. مجلد `src/features/<اسم>` ملك صاحب البرانش.
 2. تسجيل الميزة بـ `features/<اسم>/index.ts` فقط (routes, access, nav, dictionary).
-3. المجلدات المشتركة (`app` `components` `lib` `i18n` `types`) والمكتبات: برانش `chore/...` صغير مستقل، ومراجعته نفس اليوم.
+3. المجلدات المشتركة (`app` `components` `lib` `i18n` `types`) والمكتبات: برانش `chore/...` صغير مستقل، ودمجه نفس اليوم.
 4. عمر البرانش لا يزيد عن 5 أيام.
 5. قبل الرفع `git pull --rebase origin main`، والـ CI لازم يكون أخضر قبل الدمج.
 
 ## إعداد الريبو (حسام، مرة وحدة)
-- Settings ← Branches: حماية `main` (PR + موافقة واحدة + status checks + منع force push).
-- Settings ← General: Squash merge فقط + حذف البرانش بعد الدمج.
+- Settings ← Branches: حماية `main` (PR + status check `check` إجباري + منع force push، بدون موافقات مطلوبة).
+- Settings ← General: Merge commit فقط (بدون squash) + حذف البرانش بعد الدمج.
 - `.github/workflows/ci.yml`: `npm ci` ثم `npm run lint` ثم `npm run build`.
 
 ## البرانشات
