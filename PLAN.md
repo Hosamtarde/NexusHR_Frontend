@@ -28,8 +28,8 @@
 ## الـ Mock
 | الشي | وين |
 |---|---|
-| العقد | `reference/openapi.json` |
-| الأنواع | `npm run gen:types` ← `src/types/api.d.ts` |
+| العقد | `reference/API_MAP.md` (و`reference/openapi.json` مرجع إضافي بس، بعض الـ DTO فاضية فيه) |
+| الأنواع | `src/features/<ميزة>/types.ts` (الطلبات والردود، من `API_MAP.md`) |
 | عميل الـ API | `src/lib/http.ts` (axios، بيفك الغلاف `{ success, data, timestamp }`) |
 | الـ Mock | `src/features/<ميزة>/mocks.ts` (MSW) |
 | المفتاح | `.env`: `VITE_USE_MOCK=true` (بيصير false وقت الدمج) |
@@ -53,7 +53,7 @@
 |---|---|---|
 | 0.1 | `chore/project-setup` (حسام) | Vite وTS وTailwind والـ tokens والخطوط، الترجمة، lint، مجلدات features مع index.ts، axios وreact-query وMSW وgen:types، CI، CLAUDE.md، reference مستثنى من lint وbuild |
 | 0.2 | `feat/ui-kit` (بهاء) | مكوّنات `components/ui` (حوالي 20): Button، Field، Menu، Overlay، Avatar، DataTable، Tabs، Toast، States، Pagination... |
-| 0.3 | `feat/core-api-auth` (حسام) | refresh التوكن، الجلسة، RequireRole وaccess، الـ router، 403/404/500، 3 حسابات mock. `POST /auth/login` `POST /auth/refresh` `GET /auth/me` `POST /auth/logout` |
+| 0.3 | `feat/core-api-auth` (حسام) | refresh التوكن، الجلسة، RequireRole وaccess (ما ينهار مع دور `applicant` أو أي دور مش معروف، بيعامله كممنوع)، الـ router، 403/404/500، 3 حسابات mock. `POST /auth/login` `POST /auth/refresh` `GET /auth/me` `POST /auth/logout` |
 | 0.4 | `feat/app-shell` (بهاء) | Sidebar وTopbar وAppShell ولوحة الأوامر وSectionTabs وقائمة الحساب وتبديل اللغة |
 | 0.5 | `feat/shared-components` (حسام) | useList وListKit وPersonCell وPersonHover وCards وDetailLayout وWorkdayRibbon. `GET /employees/:id/card` |
 
@@ -63,7 +63,7 @@
 | 1.1 | `feat/auth-login` | `/login` | `POST /auth/login` (رد `chat` بينحفظ للرسائل) |
 | 1.2 | `feat/account` | `/account/profile` `/account/password` | `GET` و`PUT /users/me`، `PATCH /users/me/password` |
 | 1.3 | `feat/notifications` | `/notifications` + جرس الشريط | `GET /notifications`، `/notifications/count`، `PATCH /notifications/read-all`، `PATCH /notifications/:id/read`، `DELETE /notifications/read`، `DELETE /notifications/:id` |
-| 1.4 | `feat/employees` | `/employees` `/employees/new` `/employees/import` `/employees/:id` `/employees/:id/edit` | `GET`/`POST /employees`، `GET`/`PUT`/`DELETE /employees/:id`، `PATCH /users/:id/password` (من `feat/password-sync` بالباك) |
+| 1.4 | `feat/employees` | `/employees` `/employees/new` `/employees/import` `/employees/:id` `/employees/:id/edit` | `GET`/`POST /employees`، `GET`/`PUT`/`DELETE /employees/:id`، `PATCH /users/:id/password` |
 | 1.5 | `feat/departments` | `/employees/departments` `/employees/departments/:id` | `/departments` (CRUD) |
 
 ### موجة 2
@@ -94,10 +94,10 @@
 | 4.5 | `feat/skills` ⚠️ | `/employees/skills` `/employees/skills/matrix` `/skills/me` | لا يوجد باك، Mock فقط |
 | 4.6 | `feat/smart-assign` ⚠️ | `/tasks/smart` + لوحة ترشيح داخل `/tasks/new` | لا يوجد باك، Mock فقط |
 
-⚠️ مخفية بـ `VITE_ENABLE_PLANNED=false` لحد ما الباك يجهز، وبعدها برانش `chore/<ميزة>-connect-api` يبدّل mock بـ axios بدون لمس الشاشات.
+⚠️ بتضل Mock ومخفية بـ `VITE_ENABLE_PLANNED=false` (شوف "قواعد الباك" بـ `CLAUDE.md`).
 
 ## الدمج مع الباك الحقيقي (حسام، آخر شي، بعد موجة 3 على الأقل)
-1. يشغّل الباك والدوكر (مع `feat/password-sync` مدموج)، يجدّد `reference/openapi.json`، ويشغّل `npm run gen:types`. أي خطأ TypeScript = اختلاف بين الـ mock والباك، ويتصلح أولاً.
+1. يشغّل الباك والدوكر زي ما هم، ويقارن الردود الحقيقية مع `types.ts` بكل ميزة. أي اختلاف بين الـ mock والباك بيتصلح بالفرونت، والباك ما بيتعدّل.
 2. `.env`: `VITE_USE_MOCK=false` و`VITE_API_URL=http://localhost:3000`.
 3. يمر على الميزات بترتيب الجدول، يجرّبها بالأدوار الثلاثة، ويعلّم ✅ بعمود "دمج الباك" بـ `PROGRESS.md`. أي اختلاف بينصلح ببرانش `fix/<ميزة>-integrate`.
 4. الرسائل: يشغّل Rocket.Chat بالدوكر ويربطها بتوكن `chat`.
