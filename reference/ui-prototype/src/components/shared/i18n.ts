@@ -1,0 +1,38 @@
+import { defineDict } from '@/i18n/define'
+
+export const sharedDict = defineDict(
+  {
+    'person.deleted': 'مستخدم محذوف',
+    'person.everyone': 'عرض كل الأشخاص ({n})',
+    'person.card': 'بطاقة {name}',
+    'person.cardTitle': 'بطاقة الموظف',
+    'person.noData': 'لا تتوفر بيانات لهذا الموظف.',
+    'person.today': 'اليوم: {status}',
+    'person.notCheckedIn': 'لم يسجّل بعد',
+    'person.email': 'البريد',
+    'person.department': 'القسم',
+    'person.manager': 'المدير المباشر',
+    'person.none': 'لا يوجد',
+    'person.reports': 'المرؤوسون المباشرون',
+    'person.fullProfile': 'الملف الكامل',
+    'person.attendance': 'سجل الحضور',
+    'person.inOrg': 'في الهيكل',
+  },
+  {
+    'person.deleted': 'Deleted user',
+    'person.everyone': 'Show everyone ({n})',
+    'person.card': '{name} card',
+    'person.cardTitle': 'Employee card',
+    'person.noData': 'No data is available for this employee.',
+    'person.today': 'Today: {status}',
+    'person.notCheckedIn': 'Not checked in yet',
+    'person.email': 'Email',
+    'person.department': 'Department',
+    'person.manager': 'Direct manager',
+    'person.none': 'None',
+    'person.reports': 'Direct reports',
+    'person.fullProfile': 'Full profile',
+    'person.attendance': 'Attendance history',
+    'person.inOrg': 'In org chart',
+  },
+)

@@ -1,0 +1,16 @@
+export const enTaskText: Record<number, [title: string, description: string]> = {
+  1: ['Redesign the attendance page', 'Update the check-in screen for mobile, show today’s status and check-in time clearly, and add a confirmation before check-out.'],
+  2: ['Document the APIs', 'Write complete documentation for the requests and leave module with request and response examples.'],
+  3: ['Upgrade the mail servers', 'Move mailboxes to the new server and update DNS records with minimal downtime.'],
+  4: ['Close the October accounts', 'Reconcile bank accounts and close the October books before monthly reports are prepared.'],
+  5: ['Test the attendance system', 'Write test cases for check-in, check-out and lateness calculation and run them on real data.'],
+  6: ['Q1 sales plan', 'Prepare the Q1 2027 sales plan with targets for every representative and the target customers.'],
+  7: ['Update the knowledge base', 'Review the most requested support articles and update them using October’s recurring questions.'],
+  8: ['Main warehouse stock count', 'Count the main warehouse in full and reconcile it with the system before quarter end.'],
+  9: ['Update the employee handbook', 'Add the hybrid work policy and update the leave policy in the employee handbook.'],
+  10: ['Organize the open hiring day', 'Coordinate with Palestine Polytechnic University to organize an open hiring day for final-year students.'],
+  11: ['Move backups to the cloud', 'Schedule nightly database backups to cloud storage and test the restore.'],
+  12: ['Estimated budget report', 'Prepare a draft of the 2027 estimated budget to present to management.'],
+  13: ['Hebron customer visits', 'Visit key customers in the Hebron area and record their feedback.'],
+  14: ['Reduce ticket response time', 'Analyse late tickets and propose steps to bring the first response time under two hours.'],
+}

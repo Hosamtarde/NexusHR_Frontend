@@ -1,0 +1,26 @@
+import { defineBi } from '@/i18n/bi'
+
+export const dashboard2Dict = defineBi({
+  'dm.summaryManager': ['لديك {pending} طلبات تنتظر قرارك، وحضر {present} من {total} من فريقك اليوم.', 'You have {pending} requests waiting and {present} of {total} team members are in today.'],
+  'dm.summaryEmployee': ['لديك {n} مهام مفتوحة. ابدأ بالأقرب موعدًا.', 'You have {n} open tasks. Start with the nearest deadline.'],
+  'dm.noTasks': ['لا توجد مهام مفتوحة. يوم هادئ!', 'No open tasks. A quiet day!'],
+  'dm.assignTask': ['تعيين مهمة ذكي', 'Smart task assignment'],
+  'dm.newRequest': ['طلب جديد', 'New request'],
+  'dm.m.team': ['أعضاء الفريق', 'Team members'],
+  'dm.m.teamHint': ['مرؤوسون مباشرون', 'Direct reports'],
+  'dm.m.pendingHint': ['تنتظر قرارك', 'Waiting for your decision'],
+  'dm.m.openTasks': ['مهام مفتوحة', 'Open tasks'],
+  'dm.m.overdue': ['{n} متأخرة', '{n} overdue'],
+  'dm.m.balance': ['رصيد الإجازة المتبقي', 'Leave days left'],
+  'dm.m.balanceLow': ['رصيدك منخفض', 'Your balance is low'],
+  'dm.m.latestPay': ['صافي آخر راتب', 'Latest net pay'],
+  'dm.m.lastReview': ['آخر تقييم أداء', 'Latest review'],
+  'dm.m.skills': ['{n} مهارات مسجّلة', '{n} skills recorded'],
+  'dm.team.title': ['فريقك اليوم', 'Your team today'],
+  'dm.load.title': ['عبء العمل', 'Workload'],
+  'dm.attention.title': ['مهام تحتاج انتباهك', 'Tasks needing attention'],
+  'dm.attention.empty': ['لا توجد مهام مفتوحة', 'No open tasks'],
+  'dm.myTasks.title': ['مهامي القادمة', 'My upcoming tasks'],
+  'dm.myRequests.title': ['آخر طلباتي', 'My recent requests'],
+  'dm.myRequests.empty': ['لم تقدّم أي طلب بعد', 'You have not submitted any requests'],
+})

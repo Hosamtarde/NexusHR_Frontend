@@ -1,0 +1,28 @@
+import { defineBi } from '@/i18n/bi'
+
+export const requests2Dict = defineBi({
+  'rq.form.errTitle': ['العنوان بين 3 و150 حرفًا.', 'The title must be 3 to 150 characters.'],
+  'rq.ds.title': ['دعم القرار', 'Decision support'],
+  'rq.ds.balance': ['رصيد {type}', '{type} balance'],
+  'rq.ds.balanceLine': ['المتبقي {left} يوم، المطلوب {need}', '{left} days left, {need} requested'],
+  'rq.ds.balanceAfter': ['الرصيد بعد الموافقة: {n} يوم', 'Balance after approval: {n} days'],
+  'rq.ds.noBalance': ['لا يوجد رصيد محسوب لهذا النوع.', 'No balance calculated for this type.'],
+  'rq.ds.history': ['طلبات سابقة للموظف', 'Earlier requests by this employee'],
+  'rq.ds.noHistory': ['لا توجد طلبات سابقة.', 'No earlier requests.'],
+  'rq.ds.overlap': ['غياب متداخل في القسم', 'Overlapping absence in the department'],
+  'rq.ds.noOverlap': ['لا يوجد غياب متداخل في القسم.', 'No overlapping absence in the department.'],
+  'rq.step.submitted': ['قدّم {name} الطلب', '{name} submitted the request'],
+  'rq.step.review': ['بانتظار قرار المراجعة', 'Waiting for the review decision'],
+  'rq.step.nextHr': ['مراجعة من مدير الموظف أو الموارد البشرية', 'Review by the employee’s manager or HR'],
+  'rq.step.done': ['اكتمل الطلب', 'Request closed'],
+  'rq.stat.period': ['الفترة', 'Period'],
+  'rq.stat.duration': ['المدة', 'Duration'],
+  'rq.stat.amount': ['المبلغ', 'Amount'],
+  'rq.stat.monthly': ['القسط الشهري', 'Monthly instalment'],
+  'rq.stat.type': ['النوع', 'Type'],
+  'rq.stat.submitted': ['تاريخ التقديم', 'Submitted'],
+  'rq.detail.cancel': ['حذف الطلب', 'Delete request'],
+  'rq.detail.cancelTitle': ['حذف هذا الطلب؟', 'Delete this request?'],
+  'rq.detail.cancelDesc': ['يمكن حذف الطلبات المعلقة فقط، ولا يمكن التراجع.', 'Only pending requests can be deleted, and this cannot be undone.'],
+  'rq.detail.deleted': ['تم حذف الطلب', 'Request deleted'],
+})
