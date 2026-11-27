@@ -1,6 +1,4 @@
 import { setupWorker } from 'msw/browser'
-import type { RequestHandler } from 'msw'
+import { handlers } from './handlers'
 
-const modules = import.meta.glob<RequestHandler[]>('../features/*/mocks.ts', { eager: true, import: 'handlers' })
-
-export const worker = setupWorker(...Object.values(modules).flat())
+export const worker = setupWorker(...handlers)

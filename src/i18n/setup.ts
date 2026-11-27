@@ -9,6 +9,9 @@ export const setupDict = defineBi({
   'setup.mockOff': ['الباك الحقيقي', 'Real backend'],
   'setup.api': ['عنوان الـ API', 'API URL'],
   'setup.switchLang': ['English', 'العربية'],
-  'setup.notFound': ['الصفحة غير موجودة', 'Page not found'],
-  'setup.home': ['الرئيسية', 'Home'],
+  'setup.user': ['المستخدم الحالي', 'Signed in as'],
+  'setup.role': ['الدور', 'Role'],
+  'setup.chat': ['جلسة الرسائل', 'Chat session'],
+  'setup.chatOn': ['متوفرة', 'Available'],
+  'setup.chatOff': ['غير متوفرة', 'Unavailable'],
 })
